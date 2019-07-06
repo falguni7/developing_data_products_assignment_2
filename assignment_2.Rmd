@@ -1,0 +1,33 @@
+---
+title: "5 Largest Football Stadiums in London based on Capacity"
+author: "Falguni Ghosh"
+date: "7/6/2019"
+output: html_document
+---
+
+```{r, echo=FALSE}
+# 5 Largest Football Stadiums in London
+library(leaflet)
+# According to: https://www.stadiumguide.com/city-guides/london-football-guide/
+# 01) Wembley Stadium - 90000
+# 02) Emirates Stadium - 60000
+# 03) London Stadium - Annapolis - 60000
+# 04) Stamford Bridge - 41837
+# 05) White Hart Lane - 36240
+Stadia_websites <- c(
+  "<a href='https://www.stadiumguide.com/wembleynew/'>Wembley - #1 - 90000</a>",
+  "<a href='https://www.stadiumguide.com/emirates/'>Emirates Stadium - #2 - 60000</a>",
+  "<a href='https://www.stadiumguide.com/london-olympic-stadium/'>London Stadium - #3 - 60000</a>",
+  "<a href='https://www.stadiumguide.com/stamfordbridge/'>Stamford Bridge - #4 - 41837</a>",
+  "<a href='https://www.stadiumguide.com/whitehartlane/'>White Hart Lane - #5 - 36240</a>")
+  
+univLatLon <- data.frame(
+  lat = c(51.5560, 51.5549, 51.5387, 51.4817, 51.6032),
+  lng = c(-0.2795, -0.1084, -0.0166, -0.1910, -0.0657)
+)
+
+univLatLon %>%
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(popup=Stadia_websites)
+```
